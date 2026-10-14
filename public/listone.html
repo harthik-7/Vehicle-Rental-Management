@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Vehicle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>SEARCH VEHICLE</h1>
+
+    <img src="images/search-vehicle.svg" alt="Search Vehicle" class="page-image">
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="list.html">List Vehicles</a>
+        <a href="listOne.html" class="active">Search Vehicle</a>
+        <a href="insert.html">Add Vehicle</a>
+        <a href="update.html">Update Vehicle</a>
+        <a href="delete.html">Delete Vehicle</a>
+    </nav>
+
+    <label>Select Vehicle ID</label>
+
+    <select id="vehicleid">
+        <option value="">Select Vehicle ID</option>
+    </select>
+
+    <br><br>
+
+    <button onclick="searchVehicle()">
+        Search Vehicle
+    </button>
+
+    <br><br>
+
+    <div class="table-wrapper">
+        <table id="vehicleTable">
+            <tr>
+                <th>Vehicle ID</th>
+                <th>Vehicle Name</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Rent Per Day</th>
+                <th>Fuel Type</th>
+                <th>Availability</th>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+
+    <button onclick="location.href='index.html'">
+        Home Page
+    </button>
+
+    <footer>
+        © 2026 Vehicle Rental System
+    </footer>
+
+</div>
+
+<script>
+
+// Load Vehicle IDs
+fetch("/vehicles")
+.then(response => response.json())
+.then(data => {
+
+    let select = document.getElementById("vehicleid");
+
+    data.forEach(vehicle => {
+
+        select.innerHTML += `
+        <option value="${vehicle.vehicleid}">
+            ${vehicle.vehicleid}
+        </option>
+        `;
+
+    });
+
+});
+
+function searchVehicle()
+{
+    let vehicleid = document.getElementById("vehicleid").value;
+
+    if(vehicleid=="")
+    {
+        alert("Please Select Vehicle ID");
+        return;
+    }
+
+    fetch("/vehicles/" + vehicleid)
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        if(data.length==0)
+        {
+            alert("Vehicle Not Found");
+            return;
+        }
+
+        let table = document.getElementById("vehicleTable");
+
+        table.innerHTML = `
+        <tr>
+            <th>Vehicle ID</th>
+            <th>Vehicle Name</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Rent Per Day</th>
+            <th>Fuel Type</th>
+            <th>Availability</th>
+        </tr>
+
+        <tr>
+            <td>${data[0].vehicleid}</td>
+            <td>${data[0].vehiclename}</td>
+            <td>${data[0].brand}</td>
+            <td>${data[0].model}</td>
+            <td>${data[0].rentperday}</td>
+            <td>${data[0].fueltype}</td>
+            <td>${data[0].availability}</td>
+        </tr>
+        `;
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

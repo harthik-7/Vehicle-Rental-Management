@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Vehicle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ADD NEW VEHICLE</h1>
+
+<img src="images/add-vehicle.svg" alt="Add Vehicle" class="page-image">
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="list.html">List Vehicles</a>
+    <a href="listOne.html">Search Vehicle</a>
+    <a href="insert.html">Add Vehicle</a>
+    <a href="update.html">Update Vehicle</a>
+    <a href="delete.html">Delete Vehicle</a>
+</nav>
+
+<label>Vehicle ID</label>
+<input type="number" id="vehicleid">
+
+<label>Vehicle Name</label>
+<input type="text" id="vehiclename">
+
+<label>Brand</label>
+<input type="text" id="brand">
+
+<label>Model</label>
+<input type="text" id="model">
+
+<label>Rent Per Day</label>
+<input type="number" id="rentperday">
+
+<label>Fuel Type</label>
+<input type="text" id="fueltype">
+
+<label>Availability</label>
+<select id="availability">
+    <option value="Available">Available</option>
+    <option value="Not Available">Not Available</option>
+</select>
+
+<br>
+
+<button onclick="saveVehicle()">
+    Save Vehicle
+</button>
+
+<br><br>
+
+<button onclick="location.href='index.html'">
+    Home Page
+</button>
+
+<footer>
+© 2026 Vehicle Rental System
+</footer>
+
+</div>
+
+<script>
+
+function saveVehicle()
+{
+
+let vehicleid=document.getElementById("vehicleid").value;
+let vehiclename=document.getElementById("vehiclename").value;
+let brand=document.getElementById("brand").value;
+let model=document.getElementById("model").value;
+let rentperday=document.getElementById("rentperday").value;
+let fueltype=document.getElementById("fueltype").value;
+let availability=document.getElementById("availability").value;
+
+fetch("/vehicles",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+vehicleid:vehicleid,
+vehiclename:vehiclename,
+brand:brand,
+model:model,
+rentperday:rentperday,
+fueltype:fueltype,
+availability:availability
+
+})
+
+})
+
+.then(response=>response.text())
+
+.then(message=>{
+
+alert(message);
+
+location.href="index.html";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

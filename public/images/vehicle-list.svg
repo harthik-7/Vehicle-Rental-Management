@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="carNavy1" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="carNavy2" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background Pill -->
+  <rect x="10" y="10" width="300" height="140" rx="16" fill="url(#bgGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Showroom / Parking Bay Lines -->
+  <path d="M 25 132 L 295 132" stroke="#94a3b8" stroke-width="2"/>
+  <path d="M 40 132 L 60 148 M 140 132 L 160 148 M 240 132 L 260 148" stroke="#f97316" stroke-width="2" opacity="0.8"/>
+
+  <!-- Background Car (Fleet 1 - Grey/Navy) -->
+  <g opacity="0.55" transform="translate(-20, -18) scale(0.85)">
+    <path d="M 70 115 C 75 105, 90 100, 105 100 L 130 100 L 155 75 C 162 67, 175 65, 195 65 L 230 65 C 245 65, 258 75, 268 87 L 285 101 C 295 103, 300 110, 298 120 L 70 120 Z" fill="url(#carNavy1)"/>
+    <circle cx="115" cy="120" r="14" fill="#0f172a"/>
+    <circle cx="250" cy="120" r="14" fill="#0f172a"/>
+  </g>
+
+  <!-- Midground Car (SUV/Fleet 2 - Navy) -->
+  <g opacity="0.8" transform="translate(60, -8) scale(0.9)">
+    <path d="M 70 115 C 75 102, 90 98, 105 98 L 140 98 L 160 70 C 168 64, 180 62, 205 62 L 250 62 C 265 62, 275 72, 282 85 L 295 100 C 305 103, 310 110, 308 120 L 70 120 Z" fill="url(#carNavy1)"/>
+    <rect x="165" y="70" width="35" height="24" fill="#94a3b8"/>
+    <rect x="208" y="70" width="38" height="24" fill="#cbd5e1"/>
+    <circle cx="115" cy="120" r="15" fill="#0f172a" stroke="#fff" stroke-width="1"/>
+    <circle cx="265" cy="120" r="15" fill="#0f172a" stroke="#fff" stroke-width="1"/>
+  </g>
+
+  <!-- Foreground Primary Sedan Car (Navy + Orange Trim) -->
+  <g filter="url(#dropShadow)">
+    <path d="M 45 112 C 50 102, 65 97, 80 97 L 110 97 L 135 70 C 142 62, 155 60, 175 60 L 215 60 C 230 60, 245 70, 255 82 L 272 98 C 282 100, 288 107, 285 117 L 282 122 L 48 122 Z" fill="url(#carNavy2)"/>
+    <!-- Windows -->
+    <path d="M 138 74 L 175 74 L 175 94 L 115 94 Z" fill="#94a3b8"/>
+    <path d="M 182 74 L 218 74 C 228 74, 238 80, 245 90 L 250 94 L 182 94 Z" fill="#e2e8f0"/>
+    <!-- Orange accent line -->
+    <rect x="52" y="110" width="225" height="4" fill="url(#orangeGrad)" rx="2"/>
+    <!-- Wheels -->
+    <circle cx="95" cy="122" r="16" fill="#0f172a" stroke="#fff" stroke-width="2"/>
+    <circle cx="95" cy="122" r="7" fill="#64748b"/>
+    <circle cx="95" cy="122" r="3" fill="#f97316"/>
+    <circle cx="235" cy="122" r="16" fill="#0f172a" stroke="#fff" stroke-width="2"/>
+    <circle cx="235" cy="122" r="7" fill="#64748b"/>
+    <circle cx="235" cy="122" r="3" fill="#f97316"/>
+  </g>
+
+  <!-- List/Catalog Badge Icon -->
+  <g transform="translate(20, 20)" filter="url(#dropShadow)">
+    <rect x="0" y="0" width="32" height="32" rx="8" fill="url(#orangeGrad)"/>
+    <path d="M 8 10 L 24 10 M 8 16 L 24 16 M 8 22 L 18 22" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+</svg>

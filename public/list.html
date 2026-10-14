@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Vehicles</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>LIST OF VEHICLES</h1>
+
+    <img src="images/vehicle-list.svg" alt="Vehicle List" class="page-image">
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="list.html" class="active">List Vehicles</a>
+        <a href="listOne.html">Search Vehicle</a>
+        <a href="insert.html">Add Vehicle</a>
+        <a href="update.html">Update Vehicle</a>
+        <a href="delete.html">Delete Vehicle</a>
+    </nav>
+
+    <button onclick="loadVehicles()">
+        Refresh List
+    </button>
+
+    <br><br>
+
+    <div class="table-wrapper">
+        <table id="vehicleTable">
+        </table>
+    </div>
+
+    <br>
+
+    <button onclick="location.href='index.html'">
+        Home Page
+    </button>
+
+    <footer>
+        © 2026 Vehicle Rental System
+    </footer>
+
+</div>
+
+<script>
+
+loadVehicles();
+
+function loadVehicles()
+{
+    fetch("/vehicles")
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        let table = document.getElementById("vehicleTable");
+
+        table.innerHTML = `
+        <tr>
+            <th>Vehicle ID</th>
+            <th>Vehicle Name</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Rent Per Day</th>
+            <th>Fuel Type</th>
+            <th>Availability</th>
+        </tr>
+        `;
+
+        data.forEach(vehicle => {
+
+            table.innerHTML += `
+            <tr>
+                <td>${vehicle.vehicleid}</td>
+                <td>${vehicle.vehiclename}</td>
+                <td>${vehicle.brand}</td>
+                <td>${vehicle.model}</td>
+                <td>${vehicle.rentperday}</td>
+                <td>${vehicle.fueltype}</td>
+                <td>${vehicle.availability}</td>
+            </tr>
+            `;
+
+        });
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

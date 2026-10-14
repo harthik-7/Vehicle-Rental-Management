@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="carNavy" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background Pill -->
+  <rect x="10" y="10" width="300" height="140" rx="16" fill="url(#bgGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Radar / Search Waves in background -->
+  <circle cx="215" cy="75" r="45" fill="none" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4"/>
+  <circle cx="215" cy="75" r="60" fill="none" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.25"/>
+
+  <!-- Car Silhouette -->
+  <g filter="url(#dropShadow)" transform="translate(-10, 0)">
+    <path d="M 45 110 C 50 100, 65 95, 80 95 L 110 95 L 135 68 C 142 60, 155 58, 175 58 L 215 58 C 230 58, 245 68, 255 80 L 272 96 C 282 98, 288 105, 285 115 L 282 120 L 48 120 Z" fill="url(#carNavy)"/>
+    <path d="M 138 72 L 175 72 L 175 92 L 115 92 Z" fill="#94a3b8"/>
+    <path d="M 182 72 L 218 72 C 228 72, 238 78, 245 88 L 250 92 L 182 92 Z" fill="#cbd5e1"/>
+    <!-- Orange accent line -->
+    <rect x="48" y="108" width="232" height="4" fill="url(#orangeGrad)" rx="2"/>
+    <!-- Wheels -->
+    <circle cx="95" cy="120" r="16" fill="#0f172a" stroke="#fff" stroke-width="2"/>
+    <circle cx="95" cy="120" r="6" fill="#f97316"/>
+    <circle cx="235" cy="120" r="16" fill="#0f172a" stroke="#fff" stroke-width="2"/>
+    <circle cx="235" cy="120" r="6" fill="#f97316"/>
+  </g>
+
+  <!-- Large Prominent Magnifying Glass Search Graphic -->
+  <g transform="translate(160, 25)" filter="url(#dropShadow)">
+    <circle cx="45" cy="45" r="32" fill="#ffffff" fill-opacity="0.85" stroke="url(#orangeGrad)" stroke-width="6"/>
+    <circle cx="45" cy="45" r="24" fill="#0f172a" fill-opacity="0.1"/>
+    <!-- ID search document inside glass -->
+    <rect x="34" y="34" width="22" height="22" rx="4" fill="#0f172a"/>
+    <text x="45" y="49" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="11" fill="#f97316" text-anchor="middle">ID</text>
+    <!-- Handle -->
+    <line x1="68" y1="68" x2="95" y2="95" stroke="#0f172a" stroke-width="9" stroke-linecap="round"/>
+    <line x1="68" y1="68" x2="95" y2="95" stroke="url(#orangeGrad)" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>
